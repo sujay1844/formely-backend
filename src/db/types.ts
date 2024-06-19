@@ -11,7 +11,9 @@ type FormElement = {
   type: "text" | "number";
 };
 
-function validateResponse(form: Form, response: Record<string, any>) {
+type FormResponse = Record<string, any>;
+
+function validateResponse(form: Form, response: FormResponse) {
   const errors: string[] = [];
 
   const fields = new Set(form.elements.map((e) => e.label));
@@ -39,4 +41,4 @@ function validateResponse(form: Form, response: Record<string, any>) {
   return errors;
 }
 
-export { Form, FormElement, NewForm, validateResponse };
+export { Form, FormElement, NewForm, FormResponse, validateResponse };

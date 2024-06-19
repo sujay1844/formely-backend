@@ -8,6 +8,13 @@ export async function InsertForm(form: NewForm) {
 }
 
 export async function GetForm(id: string) {
-  const form = await db.collection("forms").findOne({ _id: new ObjectId(id) });
-  return form as Form;
+  try {
+    const form = await db
+      .collection("forms")
+      .findOne({ _id: new ObjectId(id) });
+    return form as Form | null;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
