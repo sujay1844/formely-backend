@@ -15,6 +15,6 @@ app.get("/ping", (_, res) => {
 app.use("/form", FormRouter);
 app.use("/response", ResponseRouter);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("Server is running on port 3000");
 });
