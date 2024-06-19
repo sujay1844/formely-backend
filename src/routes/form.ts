@@ -13,8 +13,9 @@ router.post("/", async (req, res) => {
 
 router.post("/:id", async (req, res) => {
   const { id } = req.params;
-  const form = await GetForm(id);
   const body = req.body as NewForm;
+
+  const form = await GetForm(id);
   const errors = validateResponse(form, body);
   if (errors.length > 0) {
     res.status(400).json({ errors });
